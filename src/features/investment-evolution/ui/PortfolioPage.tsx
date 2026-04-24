@@ -2,11 +2,10 @@
 
 import { useMemo, useState } from 'react';
 
-import { SessionNavbar } from '@/shared/ui/components/SessionNavbar';
-
-import { TimeRangeFilter } from '../application/TimeRangeFilter';
-import type { InvestmentPoint } from '../domain/InvestmentPoint';
-import type { TimeRange } from '../domain/TimeRange';
+import { TimeRangeFilter } from '@investment-evolution/application/TimeRangeFilter';
+import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
+import type { TimeRange } from '@investment-evolution/domain/TimeRange';
+import { SessionNavbar } from '@shared/ui/components/SessionNavbar';
 
 import { LiveIndicator } from './components/LiveIndicator';
 import { PortfolioChart } from './components/PortfolioChart';
@@ -19,13 +18,6 @@ import { useTimeRange } from './hooks/use-time-range';
 const DEMO_USER_ID = 'user1';
 const DEMO_USER_NAME = 'user1';
 
-/**
- * The method is looked up by bracket notation (`TimeRangeFilter['filter']`)
- * because the linter's `unicorn/no-array-callback-reference` +
- * `no-array-method-this-argument` rules pattern-match any `x.filter(a, b)`
- * call regardless of `x`'s type — they assume `Array#filter(fn, thisArg)`.
- * Bracket access hides the call from the heuristic while preserving types.
- */
 const filterImpl = TimeRangeFilter['filter'];
 function filterPointsByRange(points: readonly InvestmentPoint[], range: TimeRange): readonly InvestmentPoint[] {
   return filterImpl(points, range);
@@ -97,7 +89,7 @@ function PortfolioContent(props: PortfolioContentProps) {
 
   return (
     <div className="flex flex-col gap-6">
-      <PortfolioHeader points={filteredPoints} range={range} lastSnapshotAt={lastSnapshotAt} />
+      <PortfolioHeader points={filteredPoints} lastSnapshotAt={lastSnapshotAt} />
       <TimeRangeSelector value={range} onChange={setRange} />
       <PortfolioChart points={filteredPoints} range={range} />
     </div>

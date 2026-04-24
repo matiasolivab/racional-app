@@ -1,19 +1,8 @@
-import type { InvestmentPoint } from '../domain/InvestmentPoint';
-import type { TimeRange } from '../domain/TimeRange';
+import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
+import type { TimeRange } from '@investment-evolution/domain/TimeRange';
 
 const MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1000;
 
-/**
- * Day-count lookup for each bounded `TimeRange`. Values are calendar days,
- * resolved against the LAST point's date — the dataset is historical (2019 in
- * the demo), so filtering against `Date.now()` would always yield an empty
- * slice. Anchoring to the latest point matches user intent ("last N days of my
- * data").
- *
- * Uses an exhaustive `switch` (instead of a record-lookup) to keep the
- * type-narrowing tight and avoid `security/detect-object-injection` false
- * positives on dynamic-key access.
- */
 function daysForRange(range: Exclude<TimeRange, 'MAX'>): number {
   switch (range) {
     case '1M': {

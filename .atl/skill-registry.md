@@ -46,6 +46,25 @@ Before writing any Next-specific code (routing, middleware, caching, server acti
 
 Groups in order, newline between: `builtin` → `external` → `internal` → `parent` → `sibling` → `index`. Alphabetized ascending, case-insensitive. `import/no-cycle` and `import/no-duplicates` are errors.
 
+### Path aliases (enforced convention)
+
+Per-feature aliases in `tsconfig.json`:
+
+- `@investment-evolution/*` → `src/features/investment-evolution/*`
+- `@landing/*` → `src/features/landing/*`
+- `@shared/*` → `src/shared/*`
+- `@/*` → `src/*` (fallback, rarely needed)
+
+**Rules when writing imports**:
+
+- Same-directory siblings: stay relative (`./Foo`, `./components/Bar`).
+- Cross-layer within the same feature (ui → domain, application → domain, etc.): use the feature alias (`@investment-evolution/domain/InvestmentPoint`).
+- Cross-feature or to shared: use the corresponding alias (`@shared/ui/format/CurrencyFormatter`).
+- Do NOT use `../` or `../../` that traverse layers — always use the alias.
+- Do NOT use the long `@/features/investment-evolution/...` form — use `@investment-evolution/...`.
+
+This aligns the tool config with the screaming architecture: alias name = feature name.
+
 ### Architecture (PRD §7 — Screaming Architecture)
 
 - `src/app/` = Next's routing rail ONLY (layouts, metadata, routing). Every `page.tsx` is a one-line re-export of a feature UI component.

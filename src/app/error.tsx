@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 
 type RootErrorProps = {
   readonly error: Error & { digest?: string };
-  // Next 16 `error.tsx` signature mandates `unstable_retry` — framework-owned identifier.
   // eslint-disable-next-line @typescript-eslint/naming-convention
   readonly unstable_retry: () => void;
 };

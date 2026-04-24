@@ -9,11 +9,6 @@ type RequiredEnvKey =
   | 'NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID'
   | 'NEXT_PUBLIC_FIREBASE_APP_ID';
 
-/**
- * Import this only from modules that already live behind a `'use client'`
- * boundary — Firebase JS SDK is not meant to run during React Server
- * Component evaluation.
- */
 export class FirebaseClient {
   private static instance: FirebaseClient | null = null;
 

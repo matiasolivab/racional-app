@@ -1,10 +1,3 @@
-/**
- * Date granularity hint for `DateFormatter.formatRangeAware`.
- *
- * Declared locally so `shared/` stays decoupled from any feature — the consumer
- * (e.g. the `investment-evolution` feature) translates its own `TimeRange` into
- * this neutral enum at the call site.
- */
 export type DateGranularity = 'day' | 'short' | 'month';
 
 export class DateFormatter {

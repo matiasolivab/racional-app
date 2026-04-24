@@ -24,8 +24,6 @@ export function LiveIndicator(props: LiveIndicatorProps) {
     const isFirstSnapshot = previousTimestampRef.current === null;
     previousTimestampRef.current = timestamp;
 
-    // Skip the pulse on the very first snapshot — the page is already
-    // transitioning from skeleton to ready, no need to double-signal.
     if (isFirstSnapshot) {
       return;
     }

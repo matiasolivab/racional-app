@@ -11,12 +11,11 @@ import {
 } from 'lightweight-charts';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
-import { CurrencyFormatter } from '@/shared/ui/format/CurrencyFormatter';
-import { DateFormatter } from '@/shared/ui/format/DateFormatter';
-import { PercentFormatter } from '@/shared/ui/format/PercentFormatter';
-
-import type { InvestmentPoint } from '../../domain/InvestmentPoint';
-import type { TimeRange } from '../../domain/TimeRange';
+import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
+import type { TimeRange } from '@investment-evolution/domain/TimeRange';
+import { CurrencyFormatter } from '@shared/ui/format/CurrencyFormatter';
+import { DateFormatter } from '@shared/ui/format/DateFormatter';
+import { PercentFormatter } from '@shared/ui/format/PercentFormatter';
 
 type PortfolioChartProps = {
   readonly points: readonly InvestmentPoint[];
@@ -37,12 +36,6 @@ function toUtcTimestamp(date: Date): UTCTimestamp {
   return Math.floor(date.getTime() / 1000) as UTCTimestamp;
 }
 
-/**
- * lightweight-charts cannot interpret `var(--…)` — it needs concrete color
- * strings — so we resolve the values at chart-mount time (this function is
- * only invoked from inside `useEffect`, so `document` is guaranteed to
- * exist).
- */
 function readCssColor(name: string, fallback: string): string {
   const value = globalThis.getComputedStyle(globalThis.document.documentElement).getPropertyValue(name).trim();
   return value.length > 0 ? value : fallback;
@@ -80,6 +73,7 @@ export function PortfolioChart(props: PortfolioChartProps) {
         background: { color: 'transparent' },
         textColor: mutedColor,
         fontFamily: 'var(--font-mono), ui-monospace, Menlo, monospace',
+        attributionLogo: false,
       },
       grid: {
         vertLines: { visible: false },
@@ -101,7 +95,6 @@ export function PortfolioChart(props: PortfolioChartProps) {
         locale: 'es-CL',
         priceFormatter: (value: number) => currencyFormatter.formatCompact(value),
       },
-      // Historical dataset — range selector is the only X-axis control; pan/zoom disabled.
       handleScroll: false,
       handleScale: false,
     });

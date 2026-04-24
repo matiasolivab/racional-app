@@ -1,6 +1,6 @@
 import { type DocumentData, type DocumentSnapshot, Timestamp } from 'firebase/firestore';
 
-import type { InvestmentPoint } from '../domain/InvestmentPoint';
+import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
 
 type RawPoint = {
   readonly date: unknown;

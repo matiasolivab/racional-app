@@ -1,4 +1,4 @@
-import type { InvestmentPoint } from '../domain/InvestmentPoint';
+import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
 
 export class InvestmentMetrics {
   public static currentValue(points: readonly InvestmentPoint[]): number | null {
@@ -15,14 +15,6 @@ export class InvestmentMetrics {
     return last.portfolioValue - first.portfolioValue;
   }
 
-  /**
-   * Fractional variation between first and last point (e.g. `0.0912` =
-   * `+9.12%`). Returns `null` when:
-   *  - `points` is empty, or
-   *  - the first point's `portfolioValue` is `0` (division would yield
-   *    `Infinity` / `NaN`; the UI treats this as "not computable" rather than
-   *    surfacing a misleading percent).
-   */
   public static variationPercent(points: readonly InvestmentPoint[]): number | null {
     const first = points[0];
     const last = points.at(-1);
