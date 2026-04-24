@@ -19,7 +19,7 @@ export function DemoAlertButton(props: DemoAlertButtonProps) {
   };
 
   return (
-    <button type="button" aria-label={ariaLabel} className={className} onClick={handleClick}>
+    <button type="button" aria-label={ariaLabel} className={`${className} cursor-pointer`} onClick={handleClick}>
       {children}
     </button>
   );

@@ -23,7 +23,7 @@ export function UserAvatar(props: UserAvatarProps) {
       aria-expanded={isMenuOpen}
       aria-label="Menú de usuario"
       onClick={onActivate}
-      className="bg-primary text-primary-fg focus-visible:outline-primary inline-flex size-8 items-center justify-center rounded-full text-xs font-semibold uppercase tracking-wide focus-visible:outline-2 focus-visible:outline-offset-2 md:size-9 md:text-sm"
+      className="bg-primary text-primary-fg focus-visible:outline-primary inline-flex size-8 cursor-pointer items-center justify-center rounded-full text-xs font-semibold uppercase tracking-wide focus-visible:outline-2 focus-visible:outline-offset-2 md:size-9 md:text-sm"
     >
       <span aria-hidden="true">{initials}</span>
     </button>

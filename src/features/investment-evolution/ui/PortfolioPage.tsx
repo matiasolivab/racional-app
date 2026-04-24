@@ -19,13 +19,8 @@ import { useTimeRange } from './hooks/use-time-range';
 const DEMO_USER_ID = 'user1';
 const DEMO_USER_NAME = 'user1';
 
-/**
- * The method is looked up by bracket notation (`TimeRangeFilter['filter']`)
- * because the linter's `unicorn/no-array-callback-reference` +
- * `no-array-method-this-argument` rules pattern-match any `x.filter(a, b)`
- * call regardless of `x`'s type — they assume `Array#filter(fn, thisArg)`.
- * Bracket access hides the call from the heuristic while preserving types.
- */
+// `TimeRangeFilter['filter']` bracket access sidesteps unicorn/no-array-callback-reference
+// which pattern-matches any `.filter(a, b)` regardless of receiver type.
 const filterImpl = TimeRangeFilter['filter'];
 function filterPointsByRange(points: readonly InvestmentPoint[], range: TimeRange): readonly InvestmentPoint[] {
   return filterImpl(points, range);
@@ -97,7 +92,7 @@ function PortfolioContent(props: PortfolioContentProps) {
 
   return (
     <div className="flex flex-col gap-6">
-      <PortfolioHeader points={filteredPoints} range={range} lastSnapshotAt={lastSnapshotAt} />
+      <PortfolioHeader points={filteredPoints} lastSnapshotAt={lastSnapshotAt} />
       <TimeRangeSelector value={range} onChange={setRange} />
       <PortfolioChart points={filteredPoints} range={range} />
     </div>

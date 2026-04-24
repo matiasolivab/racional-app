@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { DemoAlertButton } from '@/features/landing/ui/components/DemoAlertButton';
@@ -9,31 +10,16 @@ export function LandingNavbar() {
         aria-label="Navegación principal"
         className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-4 md:px-6"
       >
-        <Link
-          href="/"
-          className="text-fg text-lg font-semibold tracking-tight md:text-xl"
-          aria-label="Racional — ir al inicio"
-        >
-          Racional<span aria-hidden="true">.</span>
+        <Link href="/" aria-label="Racional — ir al inicio" className="inline-flex items-center">
+          <Image
+            src="/racional-logo.svg"
+            alt="Racional"
+            width={150}
+            height={28}
+            priority
+            className="h-6 w-auto md:h-7"
+          />
         </Link>
-
-        <ul className="text-fg-muted hidden items-center gap-8 text-sm font-medium md:flex">
-          <li>
-            <span role="link" aria-disabled="true" className="cursor-default select-none">
-              Productos
-            </span>
-          </li>
-          <li>
-            <span role="link" aria-disabled="true" className="cursor-default select-none">
-              Aprende
-            </span>
-          </li>
-          <li>
-            <span role="link" aria-disabled="true" className="cursor-default select-none">
-              Nosotros
-            </span>
-          </li>
-        </ul>
 
         <div className="flex items-center gap-2 md:gap-3">
           <Link

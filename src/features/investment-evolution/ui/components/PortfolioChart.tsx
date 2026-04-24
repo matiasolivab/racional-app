@@ -37,12 +37,7 @@ function toUtcTimestamp(date: Date): UTCTimestamp {
   return Math.floor(date.getTime() / 1000) as UTCTimestamp;
 }
 
-/**
- * lightweight-charts cannot interpret `var(--…)` — it needs concrete color
- * strings — so we resolve the values at chart-mount time (this function is
- * only invoked from inside `useEffect`, so `document` is guaranteed to
- * exist).
- */
+// lightweight-charts cannot interpret `var(--…)` — resolve tokens at mount via getComputedStyle.
 function readCssColor(name: string, fallback: string): string {
   const value = globalThis.getComputedStyle(globalThis.document.documentElement).getPropertyValue(name).trim();
   return value.length > 0 ? value : fallback;
@@ -80,6 +75,7 @@ export function PortfolioChart(props: PortfolioChartProps) {
         background: { color: 'transparent' },
         textColor: mutedColor,
         fontFamily: 'var(--font-mono), ui-monospace, Menlo, monospace',
+        attributionLogo: false,
       },
       grid: {
         vertLines: { visible: false },

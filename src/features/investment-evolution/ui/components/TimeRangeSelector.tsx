@@ -121,15 +121,13 @@ export function TimeRangeSelector(props: TimeRangeSelectorProps) {
     <div
       role="radiogroup"
       aria-label="Rango de tiempo"
-      className="flex w-full gap-2 overflow-x-auto pb-1 [scrollbar-width:none] md:overflow-visible [&::-webkit-scrollbar]:hidden"
+      className="flex gap-1 overflow-x-auto pb-1 [scrollbar-width:none] md:overflow-visible [&::-webkit-scrollbar]:hidden"
     >
       {TIME_RANGES.map((range, index) => {
         const isSelected = range === value;
         const baseClasses =
-          'shrink-0 rounded-full border px-4 py-1.5 font-mono text-xs font-semibold uppercase tracking-wide transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary';
-        const stateClasses = isSelected
-          ? 'border-primary bg-primary text-primary-fg'
-          : 'border-border bg-bg text-fg hover:border-fg/40';
+          'shrink-0 cursor-pointer rounded-full px-3 py-1.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary';
+        const stateClasses = isSelected ? 'bg-primary text-primary-fg' : 'text-fg-muted hover:bg-fg/5 hover:text-fg';
         return (
           <button
             key={range}
