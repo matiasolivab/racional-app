@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { DemoAlertButton } from '@/features/landing/ui/components/DemoAlertButton';
+import { DemoAlertButton } from '@landing/ui/components/DemoAlertButton';
 
 export function LandingNavbar() {
   return (

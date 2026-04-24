@@ -1,6 +1,6 @@
-import { Hero } from '@/features/landing/ui/components/Hero';
-import { LandingBackdrop } from '@/features/landing/ui/components/LandingBackdrop';
-import { LandingNavbar } from '@/features/landing/ui/components/LandingNavbar';
+import { Hero } from '@landing/ui/components/Hero';
+import { LandingBackdrop } from '@landing/ui/components/LandingBackdrop';
+import { LandingNavbar } from '@landing/ui/components/LandingNavbar';
 
 export function LandingPage() {
   return (

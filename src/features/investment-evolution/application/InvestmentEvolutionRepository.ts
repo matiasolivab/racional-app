@@ -1,4 +1,4 @@
-import type { InvestmentPoint } from '../domain/InvestmentPoint';
+import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
 
 export type Unsubscribe = () => void;
 

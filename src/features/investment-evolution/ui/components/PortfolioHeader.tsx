@@ -1,11 +1,10 @@
 'use client';
 
-import { CurrencyFormatter } from '@/shared/ui/format/CurrencyFormatter';
-import { DateFormatter } from '@/shared/ui/format/DateFormatter';
-import { PercentFormatter } from '@/shared/ui/format/PercentFormatter';
-
-import { InvestmentMetrics } from '../../application/InvestmentMetrics';
-import type { InvestmentPoint } from '../../domain/InvestmentPoint';
+import { InvestmentMetrics } from '@investment-evolution/application/InvestmentMetrics';
+import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
+import { CurrencyFormatter } from '@shared/ui/format/CurrencyFormatter';
+import { DateFormatter } from '@shared/ui/format/DateFormatter';
+import { PercentFormatter } from '@shared/ui/format/PercentFormatter';
 
 import { LiveIndicator } from './LiveIndicator';
 
@@ -14,14 +13,10 @@ type PortfolioHeaderProps = {
   readonly lastSnapshotAt: Date | null;
 };
 
-// Instance formatters constructed once per module — `Intl` constructors are
-// expensive and the locale/currency is fixed for the Racional demo (CLP, es-CL).
 const currencyFormatter = new CurrencyFormatter({ locale: 'es-CL', currency: 'CLP' });
 const percentFormatter = new PercentFormatter({ locale: 'es-CL', maximumFractionDigits: 2 });
 const dateFormatter = new DateFormatter({ locale: 'es-CL' });
 
-// `Intl.NumberFormat` with `style: currency` lacks portable `signDisplay: 'exceptZero'`,
-// so the sign prefix is prepended manually to match the percent variation's convention (R-H2).
 function formatSignedCurrency(value: number): string {
   if (value === 0) {
     return currencyFormatter.format(0);

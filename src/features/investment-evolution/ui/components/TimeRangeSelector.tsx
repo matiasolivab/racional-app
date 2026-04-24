@@ -2,19 +2,13 @@
 
 import { useCallback, useRef } from 'react';
 
-import { TIME_RANGES, type TimeRange } from '../../domain/TimeRange';
+import { TIME_RANGES, type TimeRange } from '@investment-evolution/domain/TimeRange';
 
 type TimeRangeSelectorProps = {
   readonly value: TimeRange;
   readonly onChange: (next: TimeRange) => void;
 };
 
-/**
- * Human-facing label for each range. Exhaustive switch keeps the mapping
- * readable while sidestepping the eslint `security/detect-object-injection`
- * false-positive on dynamic record lookups (same pattern as P4's
- * `TimeRangeFilter`).
- */
 function labelOf(range: TimeRange): string {
   switch (range) {
     case '1M': {
@@ -37,9 +31,6 @@ function labelOf(range: TimeRange): string {
 
 export function TimeRangeSelector(props: TimeRangeSelectorProps) {
   const { value, onChange } = props;
-  // Keyed by `TimeRange` (union of five string literals) rather than numeric
-  // index so we avoid `array[dynamic-index]` writes that trip the
-  // `security/detect-object-injection` rule without needing inline disables.
   const buttonRefs = useRef<Map<TimeRange, HTMLButtonElement>>(new Map());
 
   const focusRange = useCallback((range: TimeRange) => {

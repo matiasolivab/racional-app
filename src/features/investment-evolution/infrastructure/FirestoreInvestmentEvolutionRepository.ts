@@ -1,7 +1,10 @@
 import { type Firestore, doc, onSnapshot } from 'firebase/firestore';
 
-import type { InvestmentEvolutionRepository, Unsubscribe } from '../application/InvestmentEvolutionRepository';
-import type { InvestmentPoint } from '../domain/InvestmentPoint';
+import type {
+  InvestmentEvolutionRepository,
+  Unsubscribe,
+} from '@investment-evolution/application/InvestmentEvolutionRepository';
+import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
 
 import { FirestoreInvestmentPointMapper } from './FirestoreInvestmentPointMapper';
 

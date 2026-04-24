@@ -1,8 +1,8 @@
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
-import { LandingHeroIllustration } from '@/features/landing/ui/components/LandingHeroIllustration';
-import { TypewriterWord } from '@/features/landing/ui/components/TypewriterWord';
+import { LandingHeroIllustration } from '@landing/ui/components/LandingHeroIllustration';
+import { TypewriterWord } from '@landing/ui/components/TypewriterWord';
 
 const HERO_TYPEWRITER_WORDS = ['tiempo', 'libertad', 'opciones', 'calma', 'vida'] as const;
 

@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from 'react';
 
-import type { TimeRange } from '../../domain/TimeRange';
+import type { TimeRange } from '@investment-evolution/domain/TimeRange';
 
 export type UseTimeRangeResult = {
   readonly range: TimeRange;

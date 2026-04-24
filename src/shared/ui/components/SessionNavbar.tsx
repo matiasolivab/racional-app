@@ -3,9 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { UserAvatar } from '@/shared/ui/components/UserAvatar';
-import { UserMenu } from '@/shared/ui/components/UserMenu';
-import { useUserMenu } from '@/shared/ui/hooks/use-user-menu';
+import { UserAvatar } from '@shared/ui/components/UserAvatar';
+import { UserMenu } from '@shared/ui/components/UserMenu';
+import { useUserMenu } from '@shared/ui/hooks/use-user-menu';
 
 type SessionNavbarProps = {
   readonly userName: string;

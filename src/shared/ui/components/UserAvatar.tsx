@@ -2,7 +2,7 @@
 
 import type { Ref } from 'react';
 
-import { UserInitials } from '@/shared/ui/identity/UserInitials';
+import { UserInitials } from '@shared/ui/identity/UserInitials';
 
 type UserAvatarProps = {
   readonly ref?: Ref<HTMLButtonElement>;

@@ -19,8 +19,6 @@ export function TypewriterWord(props: TypewriterWordProps) {
   const [visibleChars, setVisibleChars] = useState(0);
   const [phase, setPhase] = useState<TypewriterPhase>('typing');
 
-  // `.at()` avoids the `security/detect-object-injection` false positive on `words[wordIndex]`.
-  // Also `string | undefined` under noUncheckedIndexedAccess, hence `?? ''`.
   const currentWord = words.at(wordIndex) ?? '';
 
   useEffect(() => {
@@ -49,7 +47,6 @@ export function TypewriterWord(props: TypewriterWordProps) {
       return () => globalThis.clearTimeout(id);
     }
 
-    // phase === 'pausing'
     const id = globalThis.setTimeout(() => {
       setWordIndex((index) => (index + 1) % words.length);
       setPhase('typing');
@@ -60,7 +57,6 @@ export function TypewriterWord(props: TypewriterWordProps) {
   if (words.length === 0) return null;
 
   const visibleText = currentWord.slice(0, visibleChars);
-  // Announce the full word once it is fully typed, avoids streaming each char to SR.
   const announced = phase === 'holding' ? currentWord : '';
 
   return (

@@ -2,11 +2,10 @@
 
 import { useMemo, useState } from 'react';
 
-import { SessionNavbar } from '@/shared/ui/components/SessionNavbar';
-
-import { TimeRangeFilter } from '../application/TimeRangeFilter';
-import type { InvestmentPoint } from '../domain/InvestmentPoint';
-import type { TimeRange } from '../domain/TimeRange';
+import { TimeRangeFilter } from '@investment-evolution/application/TimeRangeFilter';
+import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
+import type { TimeRange } from '@investment-evolution/domain/TimeRange';
+import { SessionNavbar } from '@shared/ui/components/SessionNavbar';
 
 import { LiveIndicator } from './components/LiveIndicator';
 import { PortfolioChart } from './components/PortfolioChart';
@@ -19,8 +18,6 @@ import { useTimeRange } from './hooks/use-time-range';
 const DEMO_USER_ID = 'user1';
 const DEMO_USER_NAME = 'user1';
 
-// `TimeRangeFilter['filter']` bracket access sidesteps unicorn/no-array-callback-reference
-// which pattern-matches any `.filter(a, b)` regardless of receiver type.
 const filterImpl = TimeRangeFilter['filter'];
 function filterPointsByRange(points: readonly InvestmentPoint[], range: TimeRange): readonly InvestmentPoint[] {
   return filterImpl(points, range);

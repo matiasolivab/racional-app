@@ -21,13 +21,6 @@ export class CurrencyFormatter {
     return this.fullFormatter.format(value);
   }
 
-  /**
-   * Compact CLP format: `3377856 → "$3,4M"`, `1500000 → "$1,5M"`, `500 → "$500"`.
-   *
-   * Normalizes the `Intl` output so the display is consistent across runtimes:
-   *  - strips the non-breaking space between the number and the unit
-   *  - upper-cases the unit (`k → K`, `m → M`)
-   */
   public formatCompact(value: number): string {
     const raw = this.compactFormatter.format(value);
     return raw.replaceAll(/\s+/gu, '').replace(/([km])$/iu, (match) => match.toUpperCase());
