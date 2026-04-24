@@ -1,26 +1,41 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg: #ffffff;
+  --color-fg: #0a0a0a;
+  --color-fg-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-primary: #0a0a0a;
+  --color-primary-fg: #ffffff;
+  --color-accent-mint: #cdebdc;
+  --color-accent-mint-fg: #0a0a0a;
+  --color-accent-yellow: #ffd84d;
+  --color-success: #10b981;
+  --color-danger: #ef4444;
+  --color-chart-line: #0a0a0a;
+  --color-chart-area: rgba(10, 10, 10, 0.08);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg: var(--color-bg);
+  --color-fg: var(--color-fg);
+  --color-fg-muted: var(--color-fg-muted);
+  --color-border: var(--color-border);
+  --color-primary: var(--color-primary);
+  --color-primary-fg: var(--color-primary-fg);
+  --color-accent-mint: var(--color-accent-mint);
+  --color-accent-mint-fg: var(--color-accent-mint-fg);
+  --color-accent-yellow: var(--color-accent-yellow);
+  --color-success: var(--color-success);
+  --color-danger: var(--color-danger);
+  --color-chart-line: var(--color-chart-line);
+  --color-chart-area: var(--color-chart-area);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
