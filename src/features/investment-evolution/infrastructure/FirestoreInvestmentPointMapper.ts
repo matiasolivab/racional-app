@@ -55,7 +55,7 @@ export class FirestoreInvestmentPointMapper {
     return FirestoreInvestmentPointMapper.fromDocument(snapshot.data());
   }
 
-  public static fromDocument(raw: DocumentData | undefined): readonly InvestmentPoint[] {
+  private static fromDocument(raw: DocumentData | undefined): readonly InvestmentPoint[] {
     if (raw === undefined) {
       return [];
     }

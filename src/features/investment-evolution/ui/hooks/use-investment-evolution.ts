@@ -9,12 +9,13 @@ import { FirebaseClient } from '@shared/infrastructure/firebase/FirebaseClient';
 
 type Status = 'loading' | 'ready' | 'error';
 
-export type UseInvestmentEvolutionResult = {
+type UseInvestmentEvolutionResult = {
   readonly points: readonly InvestmentPoint[];
   readonly status: Status;
   readonly error: Error | null;
   readonly lastSnapshotAt: Date | null;
 };
+
 export function useInvestmentEvolution(userId: string): UseInvestmentEvolutionResult {
   const [points, setPoints] = useState<readonly InvestmentPoint[]>([]);
   const [status, setStatus] = useState<Status>('loading');

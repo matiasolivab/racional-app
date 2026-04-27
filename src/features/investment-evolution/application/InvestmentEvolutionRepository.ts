@@ -2,8 +2,6 @@ import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoi
 
 export type Unsubscribe = () => void;
 
-export type RepositoryStatus = 'loading' | 'ready' | 'error';
-
 export interface InvestmentEvolutionRepository {
   subscribe(
     userId: string,

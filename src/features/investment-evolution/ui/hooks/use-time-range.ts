@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react';
 
 import type { TimeRange } from '@investment-evolution/domain/TimeRange';
 
-export type UseTimeRangeResult = {
+type UseTimeRangeResult = {
   readonly range: TimeRange;
   readonly setRange: (next: TimeRange) => void;
 };

@@ -4,7 +4,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 export type UseUserMenuResult = {
   readonly isOpen: boolean;
-  readonly open: () => void;
   readonly close: () => void;
   readonly toggle: () => void;
   readonly triggerRef: React.RefObject<HTMLButtonElement | null>;
@@ -16,10 +15,6 @@ export function useUserMenu(): UseUserMenuResult {
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const wasOpenRef = useRef(false);
-
-  const open = useCallback(() => {
-    setIsOpen(true);
-  }, []);
 
   const close = useCallback(() => {
     setIsOpen(false);
@@ -68,5 +63,5 @@ export function useUserMenu(): UseUserMenuResult {
     };
   }, [isOpen]);
 
-  return { isOpen, open, close, toggle, triggerRef, menuRef };
+  return { isOpen, close, toggle, triggerRef, menuRef };
 }
