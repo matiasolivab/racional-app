@@ -27,14 +27,7 @@ export default defineConfig([
   prettier,
 
   // Global ignores — extend eslint-config-next defaults (.next/**, out/**, build/**, next-env.d.ts)
-  globalIgnores([
-    '.next/**',
-    'out/**',
-    'build/**',
-    'next-env.d.ts',
-    'coverage/**',
-    'public/**',
-  ]),
+  globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts', 'coverage/**', 'public/**']),
 
   // Base language options + plugins + project rules
   {
