@@ -7,7 +7,6 @@ import { CurrencyFormatter } from '@shared/ui/format/CurrencyFormatter';
 import { DateFormatter } from '@shared/ui/format/DateFormatter';
 import { PercentFormatter } from '@shared/ui/format/PercentFormatter';
 
-
 type PortfolioHeaderProps = {
   readonly points: readonly InvestmentPoint[];
   readonly lastSnapshotAt: Date | null;

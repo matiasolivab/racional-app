@@ -4,7 +4,6 @@ import type {
 } from '@investment-evolution/application/InvestmentEvolutionRepository';
 import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
 
-
 const NOOP_ERROR_HANDLER = (): void => {
   /* no-op */
 };
