@@ -3,8 +3,6 @@
 import { useMemo, useState } from 'react';
 
 import { TimeRangeFilter } from '@investment-evolution/application/TimeRangeFilter';
-import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
-import type { TimeRange } from '@investment-evolution/domain/TimeRange';
 import { LiveIndicator } from '@investment-evolution/ui/components/LiveIndicator';
 import { PortfolioChart } from '@investment-evolution/ui/components/PortfolioChart';
 import { PortfolioHeader } from '@investment-evolution/ui/components/PortfolioHeader';
@@ -16,11 +14,6 @@ import { SessionNavbar } from '@shared/ui/components/SessionNavbar';
 
 const DEMO_USER_ID = 'user1';
 const DEMO_USER_NAME = 'user1';
-
-const filterImpl = TimeRangeFilter['filter'];
-function filterPointsByRange(points: readonly InvestmentPoint[], range: TimeRange): readonly InvestmentPoint[] {
-  return filterImpl(points, range);
-}
 
 export function PortfolioPage() {
   const [retryKey, setRetryKey] = useState(0);
@@ -48,7 +41,7 @@ function PortfolioContent(props: PortfolioContentProps) {
   const { range, setRange } = useTimeRange();
   const { points, status, error, lastSnapshotAt } = useInvestmentEvolution(DEMO_USER_ID);
 
-  const filteredPoints = useMemo(() => filterPointsByRange(points, range), [points, range]);
+  const filteredPoints = useMemo(() => TimeRangeFilter.byRange(points, range), [points, range]);
 
   if (status === 'loading') {
     return <PortfolioSkeleton />;

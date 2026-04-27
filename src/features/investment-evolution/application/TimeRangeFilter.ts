@@ -21,7 +21,7 @@ function daysForRange(range: Exclude<TimeRange, 'MAX'>): number {
 }
 
 export class TimeRangeFilter {
-  public static filter(points: readonly InvestmentPoint[], range: TimeRange): readonly InvestmentPoint[] {
+  public static byRange(points: readonly InvestmentPoint[], range: TimeRange): readonly InvestmentPoint[] {
     if (points.length === 0) {
       return [];
     }
