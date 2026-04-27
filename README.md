@@ -125,7 +125,7 @@ pnpm format       # prettier --write
 
 ## 🤖 AI Workflow
 
-El frontend se construyó con el **mismo flujo** que la API: **PRD + SDD (Spec-Driven Development) + orquestador con sub-agentes**. Las decisiones, convenciones y refactors quedan registrados en commits atómicos (ver `git log`) y en memoria persistente entre sesiones.
+El frontend se construyó con el **mismo flujo** que la API: **CLAUDE CODE + PRD + SDD (Spec-Driven Development) + orquestador con sub-agentes**. Las decisiones, convenciones y refactors quedan registrados en commits atómicos (ver `git log`) y en memoria persistente entre sesiones.
 
 - **PRD primero**: el documento `docs/PRD-investment-evolution.md` fija el scope, los estados de UI, los rangos temporales y los criterios de aceptación. Sin PRD no arranca código.
 - **SDD por cambio**: cada feature pasa por `propose → spec → design → tasks → apply → verify → archive`. Cada fase produce un artefacto verificable antes de pasar a la siguiente. Los refactors recientes (path aliases por feature, extracción del state machine del typewriter, rename `filter → byRange`) salieron de este pipeline.
