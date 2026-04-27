@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 
+import { MetricsSeries } from '@investment-evolution/application/MetricsSeries';
 import { TimeRangeFilter } from '@investment-evolution/application/TimeRangeFilter';
 import { LiveIndicator } from '@investment-evolution/ui/components/LiveIndicator';
 import { PortfolioChart } from '@investment-evolution/ui/components/PortfolioChart';
@@ -42,6 +43,10 @@ function PortfolioContent(props: PortfolioContentProps) {
   const { points, status, error, lastSnapshotAt } = useInvestmentEvolution(DEMO_USER_ID);
 
   const filteredPoints = useMemo(() => TimeRangeFilter.byRange(points, range), [points, range]);
+  const metricsPoints = useMemo(
+    () => TimeRangeFilter.byRange(MetricsSeries.withBaseline(points), range),
+    [points, range],
+  );
 
   if (status === 'loading') {
     return <PortfolioSkeleton />;
@@ -81,7 +86,7 @@ function PortfolioContent(props: PortfolioContentProps) {
 
   return (
     <div className="flex flex-col gap-6">
-      <PortfolioHeader points={filteredPoints} lastSnapshotAt={lastSnapshotAt} />
+      <PortfolioHeader points={metricsPoints} lastSnapshotAt={lastSnapshotAt} />
       <TimeRangeSelector value={range} onChange={setRange} />
       <PortfolioChart points={filteredPoints} range={range} />
     </div>
