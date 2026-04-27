@@ -5,15 +5,14 @@ import { useMemo, useState } from 'react';
 import { TimeRangeFilter } from '@investment-evolution/application/TimeRangeFilter';
 import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
 import type { TimeRange } from '@investment-evolution/domain/TimeRange';
+import { LiveIndicator } from '@investment-evolution/ui/components/LiveIndicator';
+import { PortfolioChart } from '@investment-evolution/ui/components/PortfolioChart';
+import { PortfolioHeader } from '@investment-evolution/ui/components/PortfolioHeader';
+import { PortfolioSkeleton } from '@investment-evolution/ui/components/PortfolioSkeleton';
+import { TimeRangeSelector } from '@investment-evolution/ui/components/TimeRangeSelector';
+import { useInvestmentEvolution } from '@investment-evolution/ui/hooks/use-investment-evolution';
+import { useTimeRange } from '@investment-evolution/ui/hooks/use-time-range';
 import { SessionNavbar } from '@shared/ui/components/SessionNavbar';
-
-import { LiveIndicator } from './components/LiveIndicator';
-import { PortfolioChart } from './components/PortfolioChart';
-import { PortfolioHeader } from './components/PortfolioHeader';
-import { PortfolioSkeleton } from './components/PortfolioSkeleton';
-import { TimeRangeSelector } from './components/TimeRangeSelector';
-import { useInvestmentEvolution } from './hooks/use-investment-evolution';
-import { useTimeRange } from './hooks/use-time-range';
 
 const DEMO_USER_ID = 'user1';
 const DEMO_USER_NAME = 'user1';

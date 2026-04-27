@@ -5,8 +5,7 @@ import type {
   Unsubscribe,
 } from '@investment-evolution/application/InvestmentEvolutionRepository';
 import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
-
-import { FirestoreInvestmentPointMapper } from './FirestoreInvestmentPointMapper';
+import { FirestoreInvestmentPointMapper } from '@investment-evolution/infrastructure/FirestoreInvestmentPointMapper';
 
 const COLLECTION_PATH = 'investmentEvolutions';
 

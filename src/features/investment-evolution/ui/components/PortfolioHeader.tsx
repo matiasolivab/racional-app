@@ -2,11 +2,11 @@
 
 import { InvestmentMetrics } from '@investment-evolution/application/InvestmentMetrics';
 import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
+import { LiveIndicator } from '@investment-evolution/ui/components/LiveIndicator';
 import { CurrencyFormatter } from '@shared/ui/format/CurrencyFormatter';
 import { DateFormatter } from '@shared/ui/format/DateFormatter';
 import { PercentFormatter } from '@shared/ui/format/PercentFormatter';
 
-import { LiveIndicator } from './LiveIndicator';
 
 type PortfolioHeaderProps = {
   readonly points: readonly InvestmentPoint[];

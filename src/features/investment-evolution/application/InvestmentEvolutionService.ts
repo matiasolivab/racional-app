@@ -1,6 +1,9 @@
+import type {
+  InvestmentEvolutionRepository,
+  Unsubscribe,
+} from '@investment-evolution/application/InvestmentEvolutionRepository';
 import type { InvestmentPoint } from '@investment-evolution/domain/InvestmentPoint';
 
-import type { InvestmentEvolutionRepository, Unsubscribe } from './InvestmentEvolutionRepository';
 
 const NOOP_ERROR_HANDLER = (): void => {
   /* no-op */
